@@ -137,7 +137,7 @@ def register():
 
         user_id = '456f8dbc-7755-4ab9-b159-b47468f8c866'
         receiver_id = '456f8dbc-7755-4ab9-b159-b47468f8c866'
-        file_id = '966885ed711d009460a645c66054d3bb2987787f18d2cb1bb41c94e735352a8c'
+        file_id = '4cbe44fe8de46fb9c229265b686fbc416bf97764223b51ed40e99fd919c8e009'
         Hash_img="None"
         Doctor_public_key="None"
         Doctor_verified_msg="None"

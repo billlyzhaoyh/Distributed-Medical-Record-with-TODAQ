@@ -5,13 +5,20 @@ import os
 import sys
 from flask_table import Table, Col
 import retrieve_record
+
 import requests
+
+import display_drug
 
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 api_key='82572e09-1a47-40e4-a018-22b6daa4e53f'
-Alice_id='de946eab-7f5a-4323-9867-7f1190fb1f5a'
+Alice_id='456f8dbc-7755-4ab9-b159-b47468f8c866'
+mr_id='966885ed711d009460a645c66054d3bb2987787f18d2cb1bb41c94e735352a8c'
+
+#drug file
+drug_file=['c0971fb6dff9da8b71ab2380740a83b768e11c7390a64fbea5956875267171a3','a4e1a2fe7ef7a13210d3fb4102790d9b94df98de59bd6e8666cce091c09ac295']
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -49,7 +56,7 @@ class Item(object):
         self.diagnosis = diagnosis
         self.prescription = prescription
 
-record=retrieve_record.retrieve_record(api_key,Alice_id)
+record=retrieve_record.retrieve_record(api_key,mr_id)
 
 items=[]
 
@@ -61,6 +68,29 @@ for i in range(len(record)):
 
 table = ItemTable(items)
 
+#drug table
+class ItemTable1(Table):
+    drug = Col('Drug History')
+
+
+
+# Get some objects
+class Item1(object):
+    def __init__(self,drug_history):
+        self.drug = drug
+
+
+drug=display_drug.display_drug_file(api_key,drug_file)
+
+items1=[]
+
+for i in range(len(drug)):
+    if bool(drug[i]):
+        items1.append({'drug':drug[i]})
+
+
+
+table1 = ItemTable1(items1)
 
 
 
@@ -86,7 +116,7 @@ def qr():
 def record():
     # Populate the table
 
-    return render_template('record.html', title='Record', table = table.__html__())
+    return render_template('record.html', title='Record', table = table.__html__(),table1 = table1.__html__())
 
 
 @app.route("/register", methods=['GET', 'POST'])

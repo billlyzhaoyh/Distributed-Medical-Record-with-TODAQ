@@ -8,8 +8,8 @@ import retrieve_record
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
-api_key='64366fad-e8c7-4036-b27e-6500d763ee03'
-Alice_id='456f8dbc-7755-4ab9-b159-b47468f8c866'
+api_key='82572e09-1a47-40e4-a018-22b6daa4e53f'
+Alice_id='de946eab-7f5a-4323-9867-7f1190fb1f5a'
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -47,7 +47,7 @@ class Item(object):
         self.diagnosis = diagnosis
         self.prescription = prescription
 
-record=retrieve_record.retrieve_record(api_key,user_id)
+record=retrieve_record.retrieve_record(api_key,Alice_id)
 
 items=[]
 

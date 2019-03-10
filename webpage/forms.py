@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField, FileField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
-import os
+import requests
 
 
 class RegistrationForm(FlaskForm):
@@ -16,11 +16,11 @@ class RegistrationForm(FlaskForm):
     prescription = StringField('Prescription', validators=[DataRequired()])
 
     publickey = StringField('Public key')
-
     message = StringField('Encrypted message')
-
     image = FileField('Medical certificate')
 
     # confirm_password = PasswordField('Confirm Password',
     #                                  validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Submit appointment details')
+
+

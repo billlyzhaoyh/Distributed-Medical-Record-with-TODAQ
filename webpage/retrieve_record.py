@@ -2,7 +2,7 @@
 
 #check if Alice has the record if no prompt her to ask doctor to return the record
 
-def retrieve_record(user_id):
+def retrieve_record(api_key,user_id):
 
 	import requests
 	import json
@@ -13,7 +13,7 @@ def retrieve_record(user_id):
 	url = url_base+user_id+url_end
 	headers = {
 	  'Content-Type': 'application/json',
-	  'x-api-key': '82572e09-1a47-40e4-a018-22b6daa4e53f'
+	  'x-api-key': api_key
 	}
 	response = requests.request('GET', url, headers = headers, data = payload, allow_redirects=False)
 	a=response.json()

@@ -3,9 +3,13 @@ from forms import RegistrationForm
 from werkzeug.utils import secure_filename
 import os
 from flask_table import Table, Col
+import retrieve_record
 
 UPLOAD_FOLDER = '/uploads'
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
+
+api_key='64366fad-e8c7-4036-b27e-6500d763ee03'
+Alice_id='456f8dbc-7755-4ab9-b159-b47468f8c866'
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
@@ -27,24 +31,35 @@ posts = [
 ]
 
 # Declare your table
+# Declare your table
 class ItemTable(Table):
-    name = Col('Name')
-    description = Col('Description')
+    date = Col('Date')
+    symptoms=Col('Symptom')
+    diagnosis=Col('Diagnosis')
+    prescription=Col('Prescription')
+    
 
 # Get some objects
 class Item(object):
-    def __init__(self, name, description):
-        self.name = name
-        self.description = description
-items = [Item('Name1', 'Description1'),
-         Item('Name2', 'Description2'),
-         Item('Name3', 'Description3')]
+    def __init__(self,date,symptom,diagnosis,prescription):
+        self.date = date
+        self.symptom = symptom
+        self.diagnosis = diagnosis
+        self.prescription = prescription
+
+record=retrieve_record.retrieve_record(api_key,user_id)
+
+items=[]
+
+for i in range(len(record)):
+    if bool(record[i]):
+        items.append(record[i])
+
+
 
 table = ItemTable(items)
-# # Or, equivalently, some dicts
-# items = [dict(name='Name1', description='Description1'),
-#          dict(name='Name2', description='Description2'),
-#          dict(name='Name3', description='Description3')]
+
+
 
 
 @app.route("/")

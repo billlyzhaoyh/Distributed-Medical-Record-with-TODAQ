@@ -80,8 +80,8 @@ def register():
         # file_path = os.path.join(app.config['UPLOAD_FOLDER'], myFile)
         # form.image.file.save(file_path)
 
-        image_data = request.FILES[form.image.name].read()
-        open(os.path.join(UPLOAD_PATH, form.image.data), 'w').write(image_data)
+        # image_data = request.FILES[form.image.name].read()
+        # open(os.path.join(UPLOAD_PATH, form.image.data), 'w').write(image_data)
 
         flash(f'Account created for {form.name.data}!', 'success')
         return redirect(url_for('home'))

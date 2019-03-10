@@ -2,9 +2,9 @@
 {% block content %}
             <p class='text-muted'>
               <ul class="list-group biggie">
-                <a class="list-group-item list-group-item-light" href="{{ url_for('home') }}">I want to see my medical record</a>
+                <a class="list-group-item list-group-item-light" href="{{ url_for('record') }}">I want to see my medical record</a>
                 <a class="list-group-item list-group-item-light" href="{{ url_for('seeing') }}">I am seeing a doctor today</a>
-
+                <a class="list-group-item list-group-item-light" href="{{ url_for('qr') }}">I am going to a pharmacy</a>
               </ul>
             </p>
 {% endblock content %}

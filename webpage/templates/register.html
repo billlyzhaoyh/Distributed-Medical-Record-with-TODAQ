@@ -75,6 +75,34 @@
                 </div>
 
                 <div class="form-group">
+                    {{ form.publickey.label(class="form-control-label") }}
+                    {% if form.publickey.errors %}
+                        {{ form.publickey(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.publickey.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.publickey(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.message.label(class="form-control-label") }}
+                    {% if form.message.errors %}
+                        {{ form.message(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.message.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.message(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
                     {{ form.image.label(class="form-control-label") }}
                     {% if form.image.errors %}
                         {{ form.image(class="form-control form-control-lg is-invalid") }}

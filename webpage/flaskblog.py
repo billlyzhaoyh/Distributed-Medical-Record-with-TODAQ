@@ -1,22 +1,27 @@
 from flask import Flask, render_template, url_for, flash, redirect
 from forms import RegistrationForm
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = '/uploads'
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '5791628bb0b13ce0c676dfde280ba245'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 posts = [
-    {
-        'author': 'Corey Schafer',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'April 20, 2018'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'April 21, 2018'
-    }
+    # {
+    #     'author': 'Coreyyyy Schafer',
+    #     'title': 'Blog Post 1',
+    #     'content': 'First post content',
+    #     'date_posted': 'April 20, 2018'
+    # },
+    # {
+    #     'author': 'Jane Doe',
+    #     'title': 'Blog Post 2',
+    #     'content': 'Second post content',
+    #     'date_posted': 'April 21, 2018'
+    # }
 ]
 
 
@@ -29,6 +34,10 @@ def home():
 @app.route("/about")
 def about():
     return render_template('about.html', title='About')
+
+@app.route("/seeing")
+def seeing():
+    return render_template('seeing.html', title='Seeing')
 
 
 @app.route("/register", methods=['GET', 'POST'])

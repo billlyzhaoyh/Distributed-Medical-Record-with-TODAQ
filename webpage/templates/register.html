@@ -48,6 +48,19 @@
                     {% endif %}
                 </div>
                 <div class="form-group">
+                    {{ form.diagnosis.label(class="form-control-label") }}
+                    {% if form.diagnosis.errors %}
+                        {{ form.diagnosis(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.diagnosis.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.diagnosis(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
                     {{ form.prescription.label(class="form-control-label") }}
                     {% if form.prescription.errors %}
                         {{ form.prescription(class="form-control form-control-lg is-invalid") }}
@@ -60,6 +73,21 @@
                         {{ form.prescription(class="form-control form-control-lg") }}
                     {% endif %}
                 </div>
+
+                <div class="form-group">
+                    {{ form.image.label(class="form-control-label") }}
+                    {% if form.image.errors %}
+                        {{ form.image(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.image.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.image(class="form-control form-control-lg") }}
+                    {% endif %}
+                </div>
+
             </fieldset>
             <div class="form-group">
                 {{ form.submit(class="btn btn-outline-info") }}

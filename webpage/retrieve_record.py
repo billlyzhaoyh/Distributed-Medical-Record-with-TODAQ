@@ -25,6 +25,3 @@ def retrieve_record(api_key,user_id):
 		total_record.append(record_dict)
 	return total_record
 
-user_id="de946eab-7f5a-4323-9867-7f1190fb1f5a"
-record=retrieve_record(user_id)
-print(record)
